@@ -1,6 +1,6 @@
 on early-init
-    insmod /dwc_otg.ko
-    insmod /dwc3.ko
+    insmod /boot/dwc3.ko
+    insmod /boot/dwc_otg.ko
 
 on boot
 service remotecontrol /sbin/remotecfg /etc/remote.conf

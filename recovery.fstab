@@ -1,18 +1,11 @@
-# Android fstab file.
-#<src>                                         <mnt_point>  <type>  <mnt_flags and options>  <fs_mgr_flags>
-# The filesystem that contains the filesystem checker binary (typically /system) cannot
-# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-
-/dev/block/system          /system         ext4         ro,noatime,nosuid,nodev,noauto_da_alloc                         wait
-/dev/block/data            /data           ext4         noatime,nosuid,nodev,noauto_da_alloc                            wait,check
-/dev/block/cache           /cache          ext4         noatime,nosuid,nodev,noauto_da_alloc                            wait,check
-/dev/block/boot            /boot           emmc         defaults                                                        recoveryonly
-/dev/block/recovery        /recovery       emmc         defaults                                                        recoveryonly
-/dev/block/misc            /misc           emmc         defaults                                                        defaults
-/dev/block/logo            /logo           emmc         defaults                                                        recoveryonly
-bootloader                 /bootloader     mtd          defaults                                                        recoveryonly
-
-
-# vold-managed volumes
-/dev/block/mmcblk0p1        auto    auto      defaults      voldmanaged=sdcard1:auto
-/dev/block/sda1             auto    auto      defaults      voldmanaged=usbdisk0:auto
+#device    mountpoint    fstype    options    flags?    (fstab    version    2)
+bootloader  /bootloader mtd    defaults    defaults
+logo        /logo       mtd    defaults    defaults
+aml_logo    /aml_logo   mtd    defaults    defaults
+recovery    /recovery   mtd    defaults    defaults
+boot        /boot       mtd    defaults    defaults
+/dev/block/system       /system ext4    defaults    defaults
+/dev/block/cache        /cache  ext4    defaults    defaults
+/dev/block/data         /data   ext4    defaults    defaults
+/dev/block/mmcblk#p#    /sdcard vfat    defaults    defaults
+/dev/block/sd##         /udisk  auto    defaults    defaults
